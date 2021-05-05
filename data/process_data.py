@@ -43,20 +43,23 @@ def clean_data(df):
     
     # rename the columns of `categories`
     categories.columns = category_colnames
-    
+
     # convert category values to just numbers 0 or 1
     for column in categories:
         # set each value to be the last character of the string
         categories[column] = categories[column].apply(lambda x: x[-1])
         # convert column from string to numeric
-        categories[column] = categories[column].apply(lambda x: int(x) if x.isdigit() else 0)
-        
+        categories[column] = categories[column].apply(lambda x: int(x) if x.isdigit() else 0) 
+
     # drop the original categories column from `df`
-    df = df.drop(['categories'], axis=1)
+    df = df.drop(['categories'], axis=1)   
     
     # concatenate the original dataframe with the new `categories` dataframe
     df = pd.concat([df, categories], axis=1, join="inner")
-    
+
+    # remove all labels that are different of 0 and 1
+    df = df[(df['related'] == 0) | (df['related'] == 1)]
+
     # drop duplicates
     df = df.drop_duplicates()
     

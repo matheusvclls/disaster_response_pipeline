@@ -48,8 +48,9 @@ def tokenize(text):
     INPUT: Text of columns
     OUTPUT: Text of columns tokenized
     """
-    
-    text = text.lower()
+
+    lemmatizer = WordNetLemmatizer()
+    text = lemmatizer.lemmatize(text).lower().strip()
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     text = word_tokenize(text)
     text = [w for w in text if w not in stopwords.words("english")]
