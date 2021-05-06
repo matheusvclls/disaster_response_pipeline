@@ -79,7 +79,7 @@ def save_data(df, database_filename):
     tables_name = re.search("([/])\w+([.])",database_filename)
     tables_name = tables_name.group(0)
     tables_name = tables_name[1:-1]
-    df.to_sql(tables_name, engine, index=False)  
+    df.to_sql(tables_name, engine, index=False, if_exists='replace')  
 
 
 def main():

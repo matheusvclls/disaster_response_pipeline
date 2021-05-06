@@ -45,6 +45,9 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    category_related_counts = df.groupby('related').count()['message']
+    category_related_names = ['Yes' if i==1 else 'No' for i in list(category_related_counts.index)]
+
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -63,6 +66,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }},
+
+       {    
+            'data': [
+                Bar(
+                    x=category_related_names,
+                    y=category_related_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Messages Related with Disaster',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category Related"
                 }
             }
         }
