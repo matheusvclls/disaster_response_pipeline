@@ -4,9 +4,9 @@
 
 1. [Installation](#installation)
 2. [Instruction](#instruction)
-2. [Project Motivation](#motivation)
-3. [File Descriptions](#files)
-4. [Licensing, Authors, and Acknowledgements](#licensing)
+3. [Project Motivation](#motivation)
+4. [File Descriptions](#files)
+5. [Licensing, Authors, and Acknowledgements](#licensing)
 
 
 ## Installation <a name="installation"></a>
